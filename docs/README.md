@@ -47,6 +47,9 @@ The validation workflow checks for:
 
 The validation workflow completed successfully.
 
+<img width="1215" height="1518" alt="Screenshot_3-9-2026_204030_github com" src="https://github.com/user-attachments/assets/6f6caada-5307-4895-a557-ffa5103fa84b" />
+
+
 ## Project Structure
 
 ```text
