@@ -1,0 +1,88 @@
+﻿@model List<RaceDay.MVC.Models.CategoryViewModel>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+@{
+    ViewData["Title"] = "Race Categories";
+}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4">Available Race Categories</h1>
+
+    <p class="text-muted">
+        Choose a race category to see its distance and participant limit.
+    </p>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            No race categories are currently available.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var category in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+
+                            <h4>@category.CategoryName</h4>
+
+                            <p>
+                                <strong>Distance:</strong>
+                                @category.DistanceKm km
+                            </p>
+
+                            <p>
+                                <strong>Maximum participants:</strong>
+                                @category.MaximumParticipants
+                            </p>
+
+                            <p>
+                                <strong>Event ID:</strong>
+                                @category.EventId
+                            </p>
+                            <form asp-controller="Participant"
+                                  asp-action="Enrol"
+                                  method="post">
+
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden"
+                                       name="categoryId"
+                                       value="@category.CategoryId" />
+
+                                <button type="submit" class="btn btn-success w-100">
+                                    Enrol Now
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-secondary mt-4">
+        Back to Dashboard
+    </a>
+
+</div>

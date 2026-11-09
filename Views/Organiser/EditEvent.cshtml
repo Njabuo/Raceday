@@ -1,0 +1,85 @@
+﻿@model RaceDay.MVC.Models.EditEventViewModel
+
+@{
+    ViewData["Title"] = "Edit Race Event";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h2>Edit Race Event</h2>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="EditEvent" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" asp-for="EventId" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="EventName" class="form-label">
+                        Event Name
+                    </label>
+                    <input asp-for="EventName" class="form-control" />
+                    <span asp-validation-for="EventName"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EventDate" class="form-label">
+                        Event Date
+                    </label>
+                    <input asp-for="EventDate"
+                           type="date"
+                           class="form-control" />
+                    <span asp-validation-for="EventDate"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Location" class="form-label">
+                        Location
+                    </label>
+                    <input asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">
+                        Description
+                    </label>
+                    <textarea asp-for="Description"
+                              class="form-control"
+                              rows="4"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label">
+                        Status
+                    </label>
+                    <select asp-for="Status" class="form-select">
+                        <option value="Upcoming">Upcoming</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Save Changes
+                </button>
+
+                <a asp-action="Dashboard"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>

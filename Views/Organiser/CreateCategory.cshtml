@@ -1,0 +1,69 @@
+﻿@model RaceDay.MVC.Models.CreateCategoryViewModel
+
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <h2 class="mb-4">Create Race Category</h2>
+
+        <form asp-action="CreateCategory" method="post">
+
+            <div asp-validation-summary="All"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label class="form-label">Select Event</label>
+
+                <select asp-for="EventId"
+                        asp-items="ViewBag.Events"
+                        class="form-select">
+                    <option value="">-- Select an Event --</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CategoryName"
+                       class="form-label">Category Name</label>
+
+                <input asp-for="CategoryName"
+                       class="form-control"
+                       placeholder="Example: 10 km Run" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DistanceKm"
+                       class="form-label">Distance (km)</label>
+
+                <input asp-for="DistanceKm"
+                       type="number"
+                       step="0.1"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MaximumParticipants"
+                       class="form-label">Maximum Participants</label>
+
+                <input asp-for="MaximumParticipants"
+                       type="number"
+                       class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Create Category
+            </button>
+
+            <a asp-action="Dashboard"
+               class="btn btn-secondary ms-2">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>

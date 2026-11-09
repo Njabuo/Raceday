@@ -1,0 +1,10 @@
+namespace RaceDay.MVC.Models
+{
+    public class ErrorViewModel
+    {
+        public string? RequestId { get; set; }
+        public string? BannerImageBlobName { get; set; }
+
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
+}

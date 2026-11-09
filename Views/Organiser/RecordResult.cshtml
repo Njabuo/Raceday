@@ -1,0 +1,79 @@
+﻿@model RaceDay.MVC.Models.CreateResultViewModel
+
+@{
+    ViewData["Title"] = "Record Race Result";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h3>Record Race Result</h3>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="RecordResult" method="post">
+
+                <div asp-validation-summary="All"
+                     class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="EnrolmentId"
+                           class="form-label">Enrolment ID</label>
+                    <input asp-for="EnrolmentId"
+                           class="form-control"
+                           type="number"
+                           min="1" />
+                    <span asp-validation-for="EnrolmentId"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="FinishTime"
+                           class="form-label">Finish Time</label>
+                    <input asp-for="FinishTime"
+                           class="form-control"
+                           type="time"
+                           step="1" />
+                    <span asp-validation-for="FinishTime"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Position"
+                           class="form-label">Finishing Position</label>
+                    <input asp-for="Position"
+                           class="form-control"
+                           type="number"
+                           min="1" />
+                    <span asp-validation-for="Position"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ResultStatus"
+                           class="form-label">Result Status</label>
+                    <select asp-for="ResultStatus"
+                            class="form-select">
+                        <option value="Finished">Finished</option>
+                        <option value="Disqualified">Disqualified</option>
+                        <option value="Did Not Finish">Did Not Finish</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Save Result
+                </button>
+
+                <a asp-action="Results"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
